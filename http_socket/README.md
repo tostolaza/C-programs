@@ -4,7 +4,7 @@
 
 Este código implementa un servidor HTTP en C que escucha en el puerto 8080 y responde con "Hello, World!" a cada solicitud.
 
-## 📌 Inclusión de Librerías
+## Inclusión de Librerías
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +14,7 @@ Este código implementa un servidor HTTP en C que escucha en el puerto 8080 y re
 ```
 Estas bibliotecas son necesarias para el manejo de entrada/salida, memoria, cadenas, sistema y redes.
 
-## ⚙️ Definición de Constantes
+## Definición de Constantes
 ```c
 #define PORT 8080
 #define BUFFER_SIZE 1024
@@ -22,7 +22,7 @@ Estas bibliotecas son necesarias para el manejo de entrada/salida, memoria, cade
 - `PORT`: Puerto donde el servidor escuchará conexiones.
 - `BUFFER_SIZE`: Tamaño del buffer para solicitudes HTTP.
 
-## 🔹 Declaración de Variables
+## Declaración de Variables
 ```c
 int server_fd, new_socket;
 struct sockaddr_in address;
@@ -30,7 +30,7 @@ int addrlen = sizeof(address);
 char buffer[BUFFER_SIZE] = {0};
 ```
 
-## 📡 Definición de la Respuesta HTTP
+## Definición de la Respuesta HTTP
 ```c
 const char *http_response =
     "HTTP/1.1 200 OK\r\n"
@@ -40,7 +40,7 @@ const char *http_response =
     "Hello, World!";
 ```
 
-## 🔌 Creación del Socket
+## Creación del Socket
 ```c
 if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
     perror("socket failed");
@@ -48,14 +48,14 @@ if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) {
 }
 ```
 
-## 🏗️ Configuración del Servidor
+## Configuración del Servidor
 ```c
 address.sin_family = AF_INET;
 address.sin_addr.s_addr = INADDR_ANY;
 address.sin_port = htons(PORT);
 ```
 
-## 🔗 Asociación del Socket al Puerto
+## Asociación del Socket al Puerto
 ```c
 if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
     perror("bind failed");
@@ -63,7 +63,7 @@ if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
 }
 ```
 
-## 📡 Escuchar Conexiones
+## Escuchar Conexiones
 ```c
 if (listen(server_fd, 3) < 0) {
     perror("listen");
@@ -71,7 +71,7 @@ if (listen(server_fd, 3) < 0) {
 }
 ```
 
-## 🔄 Aceptar Conexiones
+## Aceptar Conexiones
 ```c
 while (1) {
     if ((new_socket = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) {
@@ -80,19 +80,19 @@ while (1) {
     }
 ```
 
-## 📥 Leer Solicitud HTTP
+## Leer Solicitud HTTP
 ```c
 read(new_socket, buffer, BUFFER_SIZE);
 printf("Solicitud recibida:\n%s\n", buffer);
 ```
 
-## 📤 Enviar Respuesta
+## Enviar Respuesta
 ```c
 send(new_socket, http_response, strlen(http_response), 0);
 close(new_socket);
 ```
 
-## 🚀 Cómo Ejecutarlo
+## Cómo Ejecutarlo
 1. **Compilar**:
    ```sh
    gcc -o server server.c
@@ -105,7 +105,7 @@ close(new_socket);
    - Visita `http://localhost:8080/`
    - Verás `"Hello, World!"` como respuesta.
 
-## 🔚 Conclusión
+## Conclusión
 Este código implementa un servidor HTTP básico en C que:
 - Crea un socket TCP.
 - Escucha en el puerto 8080.

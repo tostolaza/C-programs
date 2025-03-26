@@ -2,14 +2,14 @@
 
 Este documento explica paso a paso la implementación de un protocolo TCP simple en C utilizando dos programas separados: un servidor y un cliente.
 
-## 1. Descripción General
+## Descripción General
 
 El protocolo TCP permite la comunicación confiable entre dos aplicaciones a través de una red. En este caso, implementaremos:
 
 - **Servidor:** Escucha conexiones entrantes, recibe un mensaje del cliente y envía una respuesta.
 - **Cliente:** Se conecta al servidor, envía un mensaje y espera la respuesta.
 
-## 2. Código del Servidor (`server.c`)
+## Código del Servidor (`server.c`)
 
 ```c
 #include <stdio.h>
@@ -74,7 +74,7 @@ int main() {
 7. Se envía una respuesta con `send()`.
 8. Se cierran los sockets.
 
-## 3. Código del Cliente (`client.c`)
+## Código del Cliente (`client.c`)
 
 ```c
 #include <stdio.h>
@@ -130,7 +130,7 @@ int main() {
 5. Se recibe la respuesta con `read()`.
 6. Se cierra el socket.
 
-## 4. Compilación y Ejecución
+## Compilación y Ejecución
 
 Para compilar los programas:
 ```bash
@@ -148,7 +148,7 @@ Para ejecutar el cliente en otra terminal:
 ./client
 ```
 
-## 5. Funcionamiento del Programa
+## Funcionamiento del Programa
 1. El servidor se ejecuta y queda esperando conexiones en el puerto `8080`.
 2. El cliente se conecta al servidor y envía el mensaje "Hola, servidor".
 3. El servidor recibe el mensaje y responde "Mensaje recibido".
